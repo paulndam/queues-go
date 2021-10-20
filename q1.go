@@ -6,7 +6,7 @@ import "fmt"
 
 // Queue array of people at MVA.
 
-type Queue [] *MVAWaitList
+type Queue1 [] *MVAWaitList
 
 
 type MVAWaitList struct {
@@ -29,7 +29,7 @@ func (mva *MVAWaitList) New(priority, quantity int, product,customerName string)
 
 // this method takes the mvawaitlist and adds it to the queue type based on priority.
 
-func (queue *Queue) Add(mva *MVAWaitList){
+func (queue *Queue1) Add(mva *MVAWaitList){
 	// check if there's no element in queue. then append element to queue.
 	if len(*queue) == 0{
 		*queue = append(*queue,mva)
@@ -44,7 +44,7 @@ func (queue *Queue) Add(mva *MVAWaitList){
 
 		for index, addedToWaitList = range *queue {
 			if mva.priority > addedToWaitList.priority {
-				*queue = append((*queue)[:index],append(Queue{mva}, (*queue)[index:]...)...)
+				*queue = append((*queue)[:index],append(Queue1{mva}, (*queue)[index:]...)...)
 				appended = true
 				break
 			}
@@ -59,8 +59,8 @@ func (queue *Queue) Add(mva *MVAWaitList){
 
 
 func main(){
-	var queue Queue
-	queue = make(Queue, 0)
+	var queue Queue1
+	queue = make(Queue1, 0)
 
 	var mva1 *MVAWaitList = &MVAWaitList{}
 	var priority1 int = 2
